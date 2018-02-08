@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Details{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>{{ data.name }}</h1>
+  <p class="lead">Spell Details</p>
+</div>
+<div class="form-group">
+  <ul class="list-unstyled">
+    <li><label>School: </label>{{data.school.name}}</li>
+    <li><label>Ritual: </label>{{data.ritual}}</li>
+    <li><label>Level: </label>{{data.level}}</li>
+    <li><label>Material: </label>{{data.material}}</li>
+    <li><label>Casting Time: </label>{{data.casting_time}}</li>
+    <li><label>Concentration: </label>{{data.concentration}}</li>
+    <li><label>Range: </label>{{data.range}}</li>
+    <li><label>Classes: </label></li>
+        <ul>
+        {% for c in data.classes %}
+          <form action="/classes" method="POST">
+          <li>
+            <input type="hidden" name="URL" value="{{ c.url }}"></input>
+            <button class="btn btn-link" type="submit" value="submit">{{ c.name }}</button>
+          </li>
+          </form>
+        {% endfor %}
+        </ul>
+    <li><label>Subclasses: </label>{{data.subclasses.name}}</li>
+    <li><label>Duration: </label>{{data.duration}}</li>
+   
+  </ul>
+</div>
+<div>
+<ul class="pager">
+  <li><a href="/">Back</a></li>
+</ul>
+</div>
+{% endblock %}

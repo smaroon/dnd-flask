@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Classes{% endblock %}
+{% block body %}
+<div class="jumbotron">
+  <h1>{{ data.name }}</h1>
+  <p class="lead">Class Details</p>
+</div>
+
+<div class="form-group">
+  <p> {{data.name}} may have any {{data.proficiency_choices[0].choose}} listed skills.</p>
+  <ul class="list-unstyled">
+     <ul>
+        {% for p in data.proficiency_choices[0].from %}
+          <li>{{ p.name }}</li>
+        {% endfor %}
+        </ul>
+  </ul>
+</div>
+<div>
+<ul class="pager">
+  <li><a href="/">Back</a></li>
+</ul>
+</div>
+{% endblock %}
